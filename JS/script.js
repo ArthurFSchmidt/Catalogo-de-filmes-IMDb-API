@@ -1,7 +1,7 @@
 let inputBuscarFilme = document.querySelector("#input-buscar-filme");
 let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 
-btnBuscarFilme.onclick = async () => {
+btnBuscarFilme.onclick = () => {
     if(inputBuscarFilme.value.length > 0){
         let filmes = new Array();
         fetch("https://www.omdbapi.com/?apikey=57fd27e0&s="+inputBuscarFilme.value)
