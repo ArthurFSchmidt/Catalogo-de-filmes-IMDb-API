@@ -8,6 +8,12 @@
     flex-wrap: wrap;
     padding: 2rem;
 }
+#mostrar-filme{
+    display:flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding: 2rem 10rem 2rem 10rem;
+}
 #logo-img {
     height: 50px;
 }

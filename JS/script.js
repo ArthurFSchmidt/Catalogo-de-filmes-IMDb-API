@@ -4,11 +4,10 @@ let btnBuscarFilme = document.querySelector("#btn-buscar-filme");
 btnBuscarFilme.onclick = async () => {
     if(inputBuscarFilme.value.length > 0){
         let filmes = new Array();
-        fetch("http://www.omdbapi.com/?apikey=57fd27e0&s="+inputBuscarFilme.value)
+        fetch("https://www.omdbapi.com/?apikey=57fd27e0&s="+inputBuscarFilme.value)
         .then((resp)=> resp.json())
         .then((resp)=>{
             resp.Search.forEach((item)=>{
-                console.log(item);
                 let filme = new Filme(
                     item.imdbID,
                     item.Title,
@@ -35,10 +34,9 @@ btnBuscarFilme.onclick = async () => {
 let listarFilmes = (filmes) => {
     let listaFilmes = document.querySelector("#lista-filmes");
     listaFilmes.innerHTML = "";
-    console.log(listaFilmes);
+    listaFilmes.style.display = "flex";
     if(filmes.length > 0) {
         filmes.forEach(async(filme) => {
-            console.log(filme.getCard());
             listaFilmes.appendChild(filme.getCard());
             filme.getBtnDetalhes().onclick=()=>{
                 detalhesFilme(filme.id);
@@ -48,10 +46,9 @@ let listarFilmes = (filmes) => {
 }
 
 let detalhesFilme = (id) => {
-    fetch("http://www.omdbapi.com/?apikey=57fd27e0&i="+id)
+    fetch("https://www.omdbapi.com/?apikey=57fd27e0&i="+id)
     .then((resp)=> resp.json())
     .then((resp)=>{
-        console.log(resp);
         let filme = new Filme(
             resp.imdbID,
             resp.Title,
@@ -66,7 +63,6 @@ let detalhesFilme = (id) => {
             resp.imdbRating
         );
         let mostrarFilme = document.querySelector("#mostrar-filme");
-        console.log(filme.getDetalhes());
         mostrarFilme.appendChild(filme.getDetalhes());
         
         ocultarFilmes();

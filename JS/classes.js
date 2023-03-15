@@ -26,7 +26,7 @@ class Filme
         this.sinopse = sinopse;
         this.direcao = direcao;
         this.elenco = elenco;
-        this.classificacao - classificacao;
+        this.classificacao = classificacao;
         this.avaliacao = avaliacao;
         this.btnDetalhes = null;
 
@@ -84,6 +84,7 @@ class Filme
         card.setAttribute("class", "card");
         let cardHeader = document.createElement("div");
         cardHeader.setAttribute("class", "card-header");
+        let titulo = document.createElement("h2");
         let imgCartaz = document.createElement("img");
         imgCartaz.setAttribute("class", "card-img-topz");
         imgCartaz.setAttribute("src",this.cartaz);
@@ -101,7 +102,9 @@ class Filme
         let divDirecao = document.createElement("div");
         let divElenco = document.createElement("div");
 
-        cardHeader.appendChild(document.createTextNode(this.titulo));
+
+
+        titulo.appendChild(document.createTextNode(this.titulo));
         sinopse.appendChild(document.createTextNode(this.sinopse));
         divDuracao.appendChild(document.createTextNode(this.duracao));
         divClassificacao.appendChild(document.createTextNode(this.classificacao));
@@ -112,7 +115,7 @@ class Filme
 
 
 
-
+        cardHeader.appendChild(titulo);
         divDetalhes.appendChild(divDuracao);
         divDetalhes.appendChild(divClassificacao);
         divDetalhes.appendChild(divAvaliacao);
