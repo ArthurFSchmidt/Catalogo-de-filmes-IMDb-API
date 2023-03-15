@@ -19,15 +19,30 @@ class Filme
     constructor(id, titulo, ano, genero, duracao, cartaz, sinopse, direcao, elenco, classificacao, avaliacao){
         this.id = id;
         this.titulo = titulo;
+        this.ano = ano;
+        this.genero = genero;
         this.duracao = duracao;
-        this.sinopse = sinopse;
         this.cartaz = cartaz;
+        this.sinopse = sinopse;
         this.direcao = direcao;
         this.elenco = elenco;
         this.classificacao - classificacao;
         this.avaliacao = avaliacao;
+        this.btnDetalhes = null;
+
     }
-    getCard = async () => {
+    setBtnDetalhes = () => {
+        this.btnDetalhes = document.createElement("button");
+        this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
+        this.btnDetalhes.setAttribute("id", this.id);
+        this.btnDetalhes.setAttribute("class", "btnDetalhesFilme");
+    }
+
+    getBtnDetalhes= () => {
+        return this.btnDetalhes;
+    }
+
+    getCard = () => {
         let card = document.createElement("div");
         card.setAttribute("class", "card");
         let imgCartaz = document.createElement("img");
@@ -56,7 +71,35 @@ class Filme
         card.appendChild(cardBody);
         cardBody.appendChild(hCardTitle);
         cardBody.appendChild(divDetalhes);
+
+        this.setBtnDetalhes();
+        cardBody.appendChild(this.getBtnDetalhes());
+
         return card;
     
+    }
+
+    getDetalhes = () => {
+        let card = document.createElement("div");
+        card.setAttribute("class", "card");
+        let cardHeader = document.createElement("div");
+        cardHeader.setAttribute("class", "card-header");
+        let imgCartaz = document.createElement("img");
+        imgCartaz.setAttribute("class", "card-img-topz");
+        imgCartaz.setAttribute("src",this.cartaz);
+        let sinopse = document.createElement("div");
+        sinopse.setAttribute("style","flex-grow:1;");
+        let divDetalhes = document.createElement("div");
+        divDetalhes.setAttribute("style", "display:flex; justify-content:space-around;");
+        let divDuracao = document.createElement("div");
+        divDuracao.setAttribute("style", "flex-grow:1;");
+        let divClassificacao = document.createElement("div");
+        divClassificacao.setAttribute("style", "flex-grow:1;");
+        let divAvaliacao = document.createElement("div");
+        divAvaliacao.setAttribute("style", "flex-grow:1;");
+        let divGeneros = document.createElement("div");
+        let divDirecao = document.createElement("div");
+        let divElenco = document.createElement("div");
+
     }
 }
