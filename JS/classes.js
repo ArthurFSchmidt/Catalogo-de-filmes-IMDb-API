@@ -101,5 +101,30 @@ class Filme
         let divDirecao = document.createElement("div");
         let divElenco = document.createElement("div");
 
+        cardHeader.appendChild(document.createTextNode(this.titulo));
+        sinopse.appendChild(document.createTextNode(this.sinopse));
+        divDuracao.appendChild(document.createTextNode(this.duracao));
+        divClassificacao.appendChild(document.createTextNode(this.classificacao));
+        divAvaliacao.appendChild(document.createTextNode(this.avaliacao));
+        divGeneros.appendChild(document.createTextNode(this.genero));
+        divDirecao.appendChild(document.createTextNode(this.direcao));
+        divElenco.appendChild(document.createTextNode(this.elenco));
+
+
+
+
+        divDetalhes.appendChild(divDuracao);
+        divDetalhes.appendChild(divClassificacao);
+        divDetalhes.appendChild(divAvaliacao);
+        card.appendChild(cardHeader);
+        card.appendChild(imgCartaz);
+        card.appendChild(sinopse);
+        card.appendChild(divDetalhes);
+        card.appendChild(divGeneros);
+        card.appendChild(divDirecao);
+        card.appendChild(divElenco);
+
+        return card;
+
     }
 }

@@ -66,6 +66,7 @@ let detalhesFilme = (id) => {
             resp.imdbRating
         );
         let mostrarFilme = document.querySelector("#mostrar-filme");
+        console.log(filme.getDetalhes());
         mostrarFilme.appendChild(filme.getDetalhes());
         
         ocultarFilmes();
