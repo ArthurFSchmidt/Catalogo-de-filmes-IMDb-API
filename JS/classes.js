@@ -84,12 +84,15 @@ class Filme
         card.setAttribute("class", "card");
         let cardHeader = document.createElement("div");
         cardHeader.setAttribute("class", "card-header");
+        let cardBody = document.createElement("div");
+        cardBody.setAttribute("style","padding:0 10px 0 10px;");
         let titulo = document.createElement("h2");
         let imgCartaz = document.createElement("img");
         imgCartaz.setAttribute("class", "card-img-topz");
         imgCartaz.setAttribute("src",this.cartaz);
         let sinopse = document.createElement("div");
         sinopse.setAttribute("style","flex-grow:1;");
+        sinopse.setAttribute("style","padding:10px 0 15px 0;");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style", "display:flex; justify-content:space-around;");
         let divDuracao = document.createElement("div");
@@ -106,26 +109,28 @@ class Filme
 
         titulo.appendChild(document.createTextNode(this.titulo));
         sinopse.appendChild(document.createTextNode(this.sinopse));
-        divDuracao.appendChild(document.createTextNode(this.duracao));
-        divClassificacao.appendChild(document.createTextNode(this.classificacao));
-        divAvaliacao.appendChild(document.createTextNode(this.avaliacao));
-        divGeneros.appendChild(document.createTextNode(this.genero));
-        divDirecao.appendChild(document.createTextNode(this.direcao));
-        divElenco.appendChild(document.createTextNode(this.elenco));
+        divDuracao.appendChild(document.createTextNode("Duration: "+this.duracao));
+        divClassificacao.appendChild(document.createTextNode("Rated: "+this.classificacao));
+        divAvaliacao.appendChild(document.createTextNode("Rating: "+this.avaliacao));
+        divGeneros.appendChild(document.createTextNode("Genres: "+this.genero));
+        divDirecao.appendChild(document.createTextNode("Director: "+this.direcao));
+        divElenco.appendChild(document.createTextNode("Cast: "+this.elenco));
 
-
-
-        cardHeader.appendChild(titulo);
         divDetalhes.appendChild(divDuracao);
         divDetalhes.appendChild(divClassificacao);
         divDetalhes.appendChild(divAvaliacao);
+
+        cardHeader.appendChild(titulo);
+
+        cardBody.appendChild(sinopse);
+        cardBody.appendChild(divDetalhes);
+        cardBody.appendChild(divGeneros);
+        cardBody.appendChild(divDirecao);
+        cardBody.appendChild(divElenco);
+        
         card.appendChild(cardHeader);
         card.appendChild(imgCartaz);
-        card.appendChild(sinopse);
-        card.appendChild(divDetalhes);
-        card.appendChild(divGeneros);
-        card.appendChild(divDirecao);
-        card.appendChild(divElenco);
+        card.appendChild(cardBody);
 
         return card;
 

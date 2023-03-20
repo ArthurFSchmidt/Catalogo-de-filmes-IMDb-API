@@ -46,7 +46,7 @@ let listarFilmes = (filmes) => {
 }
 
 let detalhesFilme = (id) => {
-    fetch("https://www.omdbapi.com/?apikey=57fd27e0&i="+id)
+    fetch("https://www.omdbapi.com/?apikey=57fd27e0&plot=full&i="+id)
     .then((resp)=> resp.json())
     .then((resp)=>{
         let filme = new Filme(
