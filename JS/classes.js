@@ -29,8 +29,9 @@ class Filme
         this.classificacao = classificacao;
         this.avaliacao = avaliacao;
         this.btnDetalhes = null;
-
+        this.btnSalvar = null;
     }
+
     setBtnDetalhes = () => {
         this.btnDetalhes = document.createElement("button");
         this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
@@ -40,6 +41,17 @@ class Filme
 
     getBtnDetalhes= () => {
         return this.btnDetalhes;
+    }
+
+    setBtnSalvar = () => {
+        this.btnSalvar = document.createElement("button");
+        this.btnSalvar.appendChild(document.createTextNode("Salvar"));
+        this.btnSalvar.setAttribute("id", this.id);
+        this.btnSalvar.setAttribute("class", "btnSalvar");
+    }
+
+    getBtnSalvar= () => {
+        return this.btnSalvar;
     }
 
     getCard = () => {
@@ -81,14 +93,19 @@ class Filme
 
     getDetalhes = () => {
         let card = document.createElement("div");
-        card.setAttribute("class", "card");
+        card.setAttribute("class", "card mb-3");
+        card.setAttribute("style","max-width: 800px;")
+        let cardContent = document.createElement("div");
+        cardContent.setAttribute("class", "row g-0");
         let cardHeader = document.createElement("div");
         cardHeader.setAttribute("class", "card-header");
         let cardBody = document.createElement("div");
-        cardBody.setAttribute("style","padding:0 10px 0 10px;");
-        let titulo = document.createElement("h2");
+        let titulo = document.createElement("h5");
+        titulo.setAttribute("class", "card-title");
+        let imgDiv = document.createElement("div");
+        imgDiv.setAttribute("class", "col-md-4")
         let imgCartaz = document.createElement("img");
-        imgCartaz.setAttribute("class", "card-img-topz");
+        imgCartaz.setAttribute("class", "img-fluid");
         imgCartaz.setAttribute("src",this.cartaz);
         let sinopse = document.createElement("div");
         sinopse.setAttribute("style","flex-grow:1;");
@@ -104,6 +121,11 @@ class Filme
         let divGeneros = document.createElement("div");
         let divDirecao = document.createElement("div");
         let divElenco = document.createElement("div");
+
+        let cardDiv = document.createElement("div");
+        cardDiv.setAttribute("class", "col-md-8");
+
+        cardBody.setAttribute("class", "card-body");
 
 
 
@@ -122,15 +144,24 @@ class Filme
 
         cardHeader.appendChild(titulo);
 
+        imgDiv.appendChild(imgCartaz);
+
+        
+        cardBody.appendChild(cardHeader);
         cardBody.appendChild(sinopse);
         cardBody.appendChild(divDetalhes);
         cardBody.appendChild(divGeneros);
         cardBody.appendChild(divDirecao);
         cardBody.appendChild(divElenco);
         
-        card.appendChild(cardHeader);
-        card.appendChild(imgCartaz);
-        card.appendChild(cardBody);
+        this.setBtnSalvar();
+        cardBody.appendChild(this.getBtnSalvar());
+
+        cardDiv.appendChild(cardBody);
+        cardContent.appendChild(imgDiv);
+        cardContent.appendChild(cardDiv);
+
+        card.appendChild(cardContent);
 
         return card;
 

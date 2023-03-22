@@ -32,6 +32,8 @@ btnBuscarFilme.onclick = () => {
 }
 
 let listarFilmes = (filmes) => {
+    let mostrarFilme = document.querySelector("#mostrar-filme");
+    mostrarFilme.innerHTML = "";
     let listaFilmes = document.querySelector("#lista-filmes");
     listaFilmes.innerHTML = "";
     listaFilmes.style.display = "flex";
@@ -64,6 +66,19 @@ let detalhesFilme = (id) => {
         );
         let mostrarFilme = document.querySelector("#mostrar-filme");
         mostrarFilme.appendChild(filme.getDetalhes());
+
+        filme.getBtnSalvar().onclick=()=>{
+            if(localStorage.getItem("filmesSalvos") == null)
+            {
+                let listaFilmesSalvos = [];
+                listaFilmesSalvos.push(filme);
+                localStorage.setItem("filmesSalvos",JSON.stringify(listaFilmesSalvos));
+            }else{
+                let listaFilmesSalvos = JSON.parse(localStorage.getItem("filmesSalvos"));
+                listaFilmesSalvos.push(filme);
+                localStorage.setItem("filmesSalvos",JSON.stringify(listaFilmesSalvos));
+            }
+        }
         
         ocultarFilmes();
     })
@@ -75,3 +90,31 @@ let ocultarFilmes = () => {
     let listaFilmes = document.querySelector("#lista-filmes");
     listaFilmes.style.display = "none";
 }
+
+
+// Teste -----------------------------------------------------------------------
+
+let filmes = new Array();
+fetch("https://www.omdbapi.com/?apikey=57fd27e0&s="+"puss")
+.then((resp)=> resp.json())
+.then((resp)=>{
+    resp.Search.forEach((item)=>{
+        let filme = new Filme(
+            item.imdbID,
+            item.Title,
+            item.Year,
+            null,
+            null,
+            item.Poster,
+            null,
+            null,
+            null,
+            null,
+            null
+        );
+        filmes.push(filme);
+
+    });
+    listarFilmes(filmes);
+
+})
