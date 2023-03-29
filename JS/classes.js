@@ -30,16 +30,17 @@ class Filme
         this.avaliacao = avaliacao;
         this.btnDetalhes = null;
         this.btnSalvar = null;
+        this.btnExcluir = null;
     }
 
     setBtnDetalhes = () => {
         this.btnDetalhes = document.createElement("button");
         this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
         this.btnDetalhes.setAttribute("id", this.id);
-        this.btnDetalhes.setAttribute("class", "btnDetalhesFilme");
+        this.btnDetalhes.setAttribute("class", "btnDetalhesFilme btn btn-secondary");
     }
 
-    getBtnDetalhes= () => {
+    getBtnDetalhes = () => {
         return this.btnDetalhes;
     }
 
@@ -47,16 +48,27 @@ class Filme
         this.btnSalvar = document.createElement("button");
         this.btnSalvar.appendChild(document.createTextNode("Salvar"));
         this.btnSalvar.setAttribute("id", this.id);
-        this.btnSalvar.setAttribute("class", "btnSalvar");
+        this.btnSalvar.setAttribute("class", "btnSalvar btn btn-danger");
     }
 
-    getBtnSalvar= () => {
+    getBtnSalvar = () => {
         return this.btnSalvar;
     }
 
-    getCard = () => {
+    setBtnExcluir = () => {
+        this.btnExcluir = document.createElement("button");
+        this.btnExcluir.appendChild(document.createTextNode("Excluir"));
+        this.btnExcluir.setAttribute("id", this.id);
+        this.btnExcluir.setAttribute("class", "btnExcluir btn btn-danger");
+    }
+
+    getBtnExcluir = () => {
+        return this.btnExcluir;
+    }
+
+    getCard = (tipo) => {
         let card = document.createElement("div");
-        card.setAttribute("class", "card");
+        card.setAttribute("class", "card justify-content-around col mb-5");
         let imgCartaz = document.createElement("img");
         imgCartaz.setAttribute("class", "card-img-topz");
         imgCartaz.setAttribute("src",this.cartaz);
@@ -66,6 +78,7 @@ class Filme
         hCardTitle.setAttribute("class", "card-title");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style", "display:flex; justify-content:space-around;");
+        divDetalhes.setAttribute("class", "text-center");
         let divGenero = document.createElement("div");
         divGenero.setAttribute("style", "flex-grow:1;");
         let divAnoProducao = document.createElement("div");
@@ -86,6 +99,11 @@ class Filme
 
         this.setBtnDetalhes();
         cardBody.appendChild(this.getBtnDetalhes());
+
+        if(tipo){
+            this.setBtnExcluir();
+            cardBody.appendChild(this.getBtnExcluir());
+        }
 
         return card;
     
@@ -112,6 +130,7 @@ class Filme
         sinopse.setAttribute("style","padding:10px 0 15px 0;");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style", "display:flex; justify-content:space-around;");
+        divDetalhes.setAttribute("class", "text-center");
         let divDuracao = document.createElement("div");
         divDuracao.setAttribute("style", "flex-grow:1;");
         let divClassificacao = document.createElement("div");
