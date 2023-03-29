@@ -111,8 +111,7 @@ class Filme
 
     getDetalhes = () => {
         let card = document.createElement("div");
-        card.setAttribute("class", "card mb-3");
-        card.setAttribute("style","max-width: 800px;")
+        card.setAttribute("class", "card mb-3 col-10");
         let cardContent = document.createElement("div");
         cardContent.setAttribute("class", "row g-0");
         let cardHeader = document.createElement("div");
