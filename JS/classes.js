@@ -37,7 +37,7 @@ class Filme
         this.btnDetalhes = document.createElement("button");
         this.btnDetalhes.appendChild(document.createTextNode("Detalhes"));
         this.btnDetalhes.setAttribute("id", this.id);
-        this.btnDetalhes.setAttribute("class", "btnDetalhesFilme btn btn-secondary");
+        this.btnDetalhes.setAttribute("class", "btnDetalhesFilme btn btn-secondary col-12 mb-2 mt-2");
     }
 
     getBtnDetalhes = () => {
@@ -48,7 +48,7 @@ class Filme
         this.btnSalvar = document.createElement("button");
         this.btnSalvar.appendChild(document.createTextNode("Salvar"));
         this.btnSalvar.setAttribute("id", this.id);
-        this.btnSalvar.setAttribute("class", "btnSalvar btn btn-danger");
+        this.btnSalvar.setAttribute("class", "btnSalvar btn btn-danger col-12 mb-2 mt-2");
     }
 
     getBtnSalvar = () => {
@@ -59,7 +59,7 @@ class Filme
         this.btnExcluir = document.createElement("button");
         this.btnExcluir.appendChild(document.createTextNode("Excluir"));
         this.btnExcluir.setAttribute("id", this.id);
-        this.btnExcluir.setAttribute("class", "btnExcluir btn btn-danger");
+        this.btnExcluir.setAttribute("class", "btnExcluir btn btn-danger col-12 mb-2");
     }
 
     getBtnExcluir = () => {
@@ -75,10 +75,10 @@ class Filme
         let cardBody = document.createElement("div");
         cardBody.setAttribute("class", "card-title");
         let hCardTitle=document.createElement("h5");
-        hCardTitle.setAttribute("class", "card-title");
+        hCardTitle.setAttribute("class", "card-title text-center text-break fs-5 text");
         let divDetalhes = document.createElement("div");
         divDetalhes.setAttribute("style", "display:flex; justify-content:space-around;");
-        divDetalhes.setAttribute("class", "text-center");
+        divDetalhes.setAttribute("class", "text-center text-break");
         let divGenero = document.createElement("div");
         divGenero.setAttribute("style", "flex-grow:1;");
         let divAnoProducao = document.createElement("div");
